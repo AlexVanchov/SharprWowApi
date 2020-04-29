@@ -184,9 +184,12 @@ namespace SharprWowApi
         public async Task<Character> GetCharacterAsync(string name, CharacterOptions characterOptions, string realm)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             var url = $"{Host}/wow/character/{realm}/{name}?namespace=profile-eu&locale={Locale}{Utility.CharacterFields.BuildOptionalFields(characterOptions)}&access_token={APIKey}";
             return await this._jsonUtility.GetDataFromURLAsync<Character>(url);
 =======
+=======
+>>>>>>> parent of da823c5... save
             var url = $"{Host}/wow/character/{realm}/{name}/statistics?namespace=profile-eu&locale={Locale}{CharacterFields.BuildOptionalFields(characterOptions)}&access_token={APIKey}";
             return await this._jsonUtility.GetDataFromURLAsync<CharacterRoot>(url);
 >>>>>>> parent of da823c5... save
