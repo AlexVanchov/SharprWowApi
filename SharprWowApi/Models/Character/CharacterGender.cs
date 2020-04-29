@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SharprWowApi.Models.Character
+﻿
+namespace WOWSharp.Community.Wow
 {
-    public class CharacterGender
+    /// <summary>
+    ///   Represents character's gender
+    /// </summary>
+    public enum CharacterGender
     {
-        public string Type { get; set; }
+        /// <summary>
+        ///   Male
+        /// </summary>
+        Male = 0,
 
-        public string Name { get; set; }
+        /// <summary>
+        ///   Female
+        /// </summary>
+        Female = 1
     }
 }
