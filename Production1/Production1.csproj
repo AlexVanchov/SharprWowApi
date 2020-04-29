@@ -68,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SharprWowApi.Test\SharprWowApi.Test.csproj">
+      <Project>{6ddb2d2c-bfef-4154-a9d6-4608121edfbc}</Project>
+      <Name>SharprWowApi.Test</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharprWowApi\SharprWowApi.csproj">
       <Project>{6763494e-1705-4800-a138-7dfc5e195cac}</Project>
       <Name>SharprWowApi</Name>
