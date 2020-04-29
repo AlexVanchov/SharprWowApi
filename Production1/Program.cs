@@ -3,7 +3,6 @@ using System.Linq;
 using SharprWowApi.Models.Character;
 using System.Threading.Tasks;
 using SharprWowApi;
-using SharprWowApi.Test;
 
 namespace Production1
 {
@@ -14,12 +13,12 @@ namespace Production1
             Console.WriteLine("Hello World!");
 
 
-            var EuClient = new WowClient(Region.EU, Locale.en_US, TestConstants.ApiKey);
+            var EuClient = new WowClient(Region.EU, Locale.en_US, "USpzMAwiSefCBT0DXdqByqcv5VErEkZ8Bx");
 
             var character = await EuClient.GetCharacterAsync(
                 "gloryen",
                 CharacterOptions.None,
-                TestConstants.EU_en_GB_Realm);
+                "turalyon");
 
             Console.WriteLine(character);
         }
