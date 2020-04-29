@@ -1,51 +1,16 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
 
-namespace WOWSharp.Community.Wow
+namespace SharprWowApi.Models.Character
 {
-	/// <summary>
-	///   Information about mounts collected by a character
-	/// </summary>
-	[DataContract]
+    /// <summary>
+    /// A list of all of the mounts obtained by the character.
+    /// </summary>
     public class CharacterMounts
     {
-        /// <summary>
-        ///   gets or sets the collection of collected mounts
-        /// </summary>
-        [DataMember(Name = "collected", IsRequired = false)]
-        public IList<Mount> Collected
-        {
-            get;
-            internal set;
-        }
+        public int NumCollected { get; set; }
 
-        /// <summary>
-        ///   gets or sets the number of collected mounts
-        /// </summary>
-        [DataMember(Name = "numCollected", IsRequired = false)]
-        public int CollectedCount
-        {
-            get;
-            internal set;
-        }
+        public int NumNotCollected { get; set; }
 
-        /// <summary>
-        ///   gets or sets number of not collected mounts
-        /// </summary>
-        [DataMember(Name = "numNotCollected", IsRequired = false)]
-        public int NotCollectedCount
-        {
-            get;
-            internal set;
-        }
-
-        /// <summary>
-        ///   String representation for debugging purposes
-        /// </summary>
-        /// <returns> String representation for debugging purposes </returns>
-        public override string ToString()
-        {
-            return CollectedCount + " mounts collected";
-        }
+        public IEnumerable<CharacterMountsCollected> Collected { get; set; }
     }
 }

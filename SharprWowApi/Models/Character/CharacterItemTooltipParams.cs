@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SharprWowApi.Models.Character
 {
-    public class CharacterGender
+    public class CharacterItemTooltipParams
     {
-        public string Type { get; set; }
+        public int TransmogItem { get; set; }
 
-        public string Name { get; set; }
+        public int TimewalkerLevel { get; set; }
     }
 }

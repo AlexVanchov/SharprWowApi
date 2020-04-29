@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SharprWowApi.Models.Character
 {
-    public class CharacterGender
+    public class CharacterTalentGlyphs
     {
-        public string Type { get; set; }
+        public IEnumerable<CharacterTalentGlyph> Major { get; set; }
 
-        public string Name { get; set; }
+        public IEnumerable<CharacterTalentGlyph> Minor { get; set; }
     }
 }

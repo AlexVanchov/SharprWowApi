@@ -1,50 +1,21 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 
-namespace WOWSharp.Community.Wow
+namespace SharprWowApi.Models.Character
 {
-	/// <summary>
-	///   Represents information about talent points spent in a tree
-	/// </summary>
-	[DataContract]
     public class CharacterTalent
     {
-        /// <summary>
-        ///   Gets or sets the tier of the talent (0-5)
-        /// </summary>
-        [DataMember(Name = "tier", IsRequired = true)]
-        public int Tier
-        {
-            get;
-            internal set;
-        }
+        public IEnumerable<CharacterTalentSelectedTalent> Talents { get; set; }
 
-        /// <summary>
-        ///   Gets or sets the column of the talent (0-2)
-        /// </summary>
-        [DataMember(Name = "column", IsRequired = true)]
-        public int Column
-        {
-            get;
-            internal set;
-        }
+        public CharacterTalentGlyphs Glyphs { get; set; }
 
-        /// <summary>
-        ///   Gets or sets the spell for the talent
-        /// </summary>
-        [DataMember(Name = "spell", IsRequired = true)]
-        public Spell Spell
-        {
-            get;
-            internal set;
-        }
+        public CharacterTalentSpec Spec { get; set; }
 
-        /// <summary>
-        ///   Gets string representation (for debugging purposes)
-        /// </summary>
-        /// <returns> Gets string representation (for debugging purposes) </returns>
-        public override string ToString()
-        {
-            return Spell.Name;
-        }
+        public string CalcTalent { get; set; }
+
+        public string CalcSpec { get; set; }
+
+        public string CalcGlyph { get; set; }
+
+        public bool? Selected { get; set; }
     }
 }

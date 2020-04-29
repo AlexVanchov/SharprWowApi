@@ -54,6 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Character\ArtifactTrait.cs" />
+    <Compile Include="Models\Character\CharacterGender.cs" />
+    <Compile Include="Models\Character\CharacterItemAppearance.cs" />
+    <Compile Include="Models\Character\Relic.cs" />
     <Compile Include="Models\Item\ItemSocket.cs" />
     <Compile Include="Models\Item\ItemSocketInfo.cs" />
     <Compile Include="Models\Mount\Mount.cs" />
@@ -91,6 +95,7 @@
     <Compile Include="Models\ChallengeMode\ChallengeCriteria.cs" />
     <Compile Include="Models\ChallengeMode\ChallengeMap.cs" />
     <Compile Include="Models\ChallengeMode\ChallengeTime.cs" />
+    <Compile Include="Models\Character\ArenaBracket.cs" />
     <Compile Include="Models\Character\AuditModel\Audit.cs" />
     <Compile Include="Models\Character\AuditModel\AuditSpell.cs" />
     <Compile Include="Models\Character\AuditModel\BonusSummary.cs" />
@@ -105,6 +110,41 @@
     <Compile Include="Models\Character\AuditModel\RecommendedBeltBuckle.cs">
     </Compile>
     <Compile Include="Models\Character\AuditModel\Slots.cs" />
+    <Compile Include="Models\Character\CharacterHunterPet.cs" />
+    <Compile Include="Models\Character\CharacterHunterPetSpec.cs" />
+    <Compile Include="Models\Character\CharacterItem.cs" />
+    <Compile Include="Models\Character\CharacterItems.cs" />
+    <Compile Include="Models\Character\CharacterItemStat.cs" />
+    <Compile Include="Models\Character\CharacterItemTooltipParams.cs" />
+    <Compile Include="Models\Character\CharacterMounts.cs" />
+    <Compile Include="Models\Character\CharacterMountsCollected.cs" />
+    <Compile Include="Models\Character\CharacterPets.cs" />
+    <Compile Include="Models\Character\CharacterPetsCollected.cs" />
+    <Compile Include="Models\Character\CharacterPetSlot.cs" />
+    <Compile Include="Models\Character\CharacterPetsStats.cs" />
+    <Compile Include="Models\Character\CharacterProfession.cs" />
+    <Compile Include="Models\Character\CharacterProgressionBoss.cs" />
+    <Compile Include="Models\Character\CharacterProgressionRaid.cs" />
+    <Compile Include="Models\Character\CharacterPvpBrackets.cs" />
+    <Compile Include="Models\Character\CharacterRoot.cs" />
+    <Compile Include="Models\Character\CharacterFeedAchivements.cs" />
+    <Compile Include="Models\Character\CharacterFeedAchievementCriteria.cs" />
+    <Compile Include="Models\Character\CharacterAchivements.cs" />
+    <Compile Include="Models\Character\CharacterAppearance.cs" />
+    <Compile Include="Models\Character\CharacterFeed.cs" />
+    <Compile Include="Models\Character\CharacterProfessions.cs" />
+    <Compile Include="Models\Character\CharacterGuild.cs" />
+    <Compile Include="Models\Character\CharacterProgression.cs" />
+    <Compile Include="Models\Character\CharacterPvp.cs" />
+    <Compile Include="Models\Character\CharacterReputation.cs" />
+    <Compile Include="Models\Character\CharacterStats.cs" />
+    <Compile Include="Models\Character\CharacterTalent.cs" />
+    <Compile Include="Models\Character\CharacterTalentGlyph.cs" />
+    <Compile Include="Models\Character\CharacterTalentGlyphs.cs" />
+    <Compile Include="Models\Character\CharacterTalentSelectedTalent.cs" />
+    <Compile Include="Models\Character\CharacterTalentSpell.cs" />
+    <Compile Include="Models\Character\CharacterTitles.cs" />
+    <Compile Include="Models\Character\CharacterTalentSpec.cs" />
     <Compile Include="Models\DataResources\DataAchievementRoot.cs" />
     <Compile Include="Models\DataResources\DataBattleGroupRoot.cs" />
     <Compile Include="Models\DataResources\DataCharacterClass.cs" />
