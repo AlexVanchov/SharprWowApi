@@ -1,16 +1,16 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace WOWSharp.Community.Wow
 {
 	/// <summary>
-	///   Represents a character's current standing with a faction
+	///   Represents an achievement category
 	/// </summary>
 	[DataContract]
-    public class CharacterReputation
+    public class AchievementCategory
     {
         /// <summary>
-        ///   gets or sets faction id
+        ///   Gets or sets the achievement id
         /// </summary>
         [DataMember(Name = "id", IsRequired = true)]
         public int Id
@@ -20,7 +20,7 @@ namespace WOWSharp.Community.Wow
         }
 
         /// <summary>
-        ///   gets or sets faction name
+        ///   Gets or sets the achievement category name
         /// </summary>
         [DataMember(Name = "name", IsRequired = true)]
         public string Name
@@ -30,30 +30,20 @@ namespace WOWSharp.Community.Wow
         }
 
         /// <summary>
-        ///   Gets or sets the current standing
+        ///   Gets or sets the subcategories of this category
         /// </summary>
-        [DataMember(Name = "standing", IsRequired = true)]
-        public Standing Standing
+        [DataMember(Name = "categories", IsRequired = false)]
+        public IList<AchievementCategory> Categories
         {
             get;
             internal set;
         }
 
         /// <summary>
-        ///   Gets or sets the progress within the current standing
+        ///   Gets or sets the achievements under this category
         /// </summary>
-        [DataMember(Name = "value", IsRequired = true)]
-        public int Value
-        {
-            get;
-            internal set;
-        }
-
-        /// <summary>
-        ///   Gets or sets the max value to reach the next standing
-        /// </summary>
-        [DataMember(Name = "max", IsRequired = true)]
-        public int Maximum
+        [DataMember(Name = "achievements", IsRequired = false)]
+        public IList<SharprWowApi.Models.DataResources.Achievement> Achievements
         {
             get;
             internal set;
@@ -65,7 +55,7 @@ namespace WOWSharp.Community.Wow
         /// <returns> Gets string representation (for debugging purposes) </returns>
         public override string ToString()
         {
-            return string.Format(CultureInfo.CurrentCulture, "{0} {1} {2}/{3}", Name, Standing, Value, Maximum);
+            return Name;
         }
     }
 }

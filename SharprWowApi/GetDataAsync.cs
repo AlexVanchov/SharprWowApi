@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SharprWowApi.Models.Achievement;
 using SharprWowApi.Models.Auction;
 using SharprWowApi.Models.BattlePet;
 using SharprWowApi.Models.ChallengeMode;
@@ -17,6 +16,7 @@ using SharprWowApi.Models.Spells;
 using SharprWowApi.Utility;
 using SharprWowApi.Models.Zone;
 using SharprWowApi.Models.Mount;
+using WOWSharp.Community.Wow;
 
 namespace SharprWowApi
 {
@@ -29,13 +29,13 @@ namespace SharprWowApi
             _jsonUtility = new JsonUtility();
         }
 
-        #region Achievement
-        public async Task<AchievementRoot> GetAchievementAsync(int achievementId)
-        {
-            var url = $"{Host}/wow/achievement/{achievementId}?locale={Locale}&apikey={APIKey}";
-            return await this._jsonUtility.GetDataFromURLAsync<AchievementRoot>(url);
-        }
-        #endregion
+        //#region Achievement
+        //public async Task<WOWSharp.Community.Wow.Achievement> GetAchievementAsync(int achievementId)
+        //{
+        //    var url = $"{Host}/wow/achievement/{achievementId}?locale={Locale}&apikey={APIKey}";
+        //    return await this._jsonUtility.GetDataFromURLAsync<WOWSharp.Community.Wow.Achievement>(url);
+        //}
+        //#endregion
 
         #region auctions
         public async Task<AuctionFilesRoot> GetAuctionFileAsync()
@@ -169,7 +169,7 @@ namespace SharprWowApi
         /// <param name="name">The Characters name</param>
         /// <param name="characterOptions">What characteroptions should be set (enum)</param>
         /// <returns>CharacterRoot object</returns>
-        public async Task<CharacterRoot> GetCharacterAsync(string name, CharacterOptions characterOptions)
+        public async Task<Character> GetCharacterAsync(string name, CharacterOptions characterOptions)
         {
             return await this.GetCharacterAsync(name, characterOptions, this.Realm);
         }
@@ -181,10 +181,10 @@ namespace SharprWowApi
         /// <param name="characterOptions">What characteroptions should be set (enum).</param>
         /// <param name="realm">The realm this character exists on.</param>
         /// <returns>CharacterRoot object</returns>
-        public async Task<CharacterRoot> GetCharacterAsync(string name, CharacterOptions characterOptions, string realm)
+        public async Task<Character> GetCharacterAsync(string name, CharacterOptions characterOptions, string realm)
         {
-            var url = $"{Host}/wow/character/{realm}/{name}?namespace=profile-eu&locale={Locale}{CharacterFields.BuildOptionalFields(characterOptions)}&access_token={APIKey}";
-            return await this._jsonUtility.GetDataFromURLAsync<CharacterRoot>(url);
+            var url = $"{Host}/wow/character/{realm}/{name}?namespace=profile-eu&locale={Locale}{Utility.CharacterFields.BuildOptionalFields(characterOptions)}&access_token={APIKey}";
+            return await this._jsonUtility.GetDataFromURLAsync<Character>(url);
         }
 
         #endregion
@@ -200,14 +200,14 @@ namespace SharprWowApi
         /// <param name="levelThreshold">Take only members above or equal to this integer</param>
         /// <param name="membersToTake">How many members should be returned (mind the 100 calls per second cap)</param>
         /// <returns>List filled with characterRoot</returns>
-        public async Task<List<CharacterRoot>> GetCharactersInGuildAsync(
+        public async Task<List<Character>> GetCharactersInGuildAsync(
             IEnumerable<GuildMember> guildMembers,
             CharacterOptions characterOptions,
             int levelThreshold,
             int membersToTake)
         {
             ////var guild = GetGuild(guildName, GuildOptions.Members, _Realm);
-            var characterList = new List<CharacterRoot>();
+            var characterList = new List<Character>();
 
             var order = from guildMemberLevel in guildMembers
                         orderby guildMemberLevel.Character.Level descending
@@ -239,14 +239,14 @@ namespace SharprWowApi
         /// <param name="guildMembers">string array with guildmembers</param>
         /// <param name="characterOptions"></param>
         /// <returns>HashSet filled with characterRoot objects</returns>
-        public async Task<HashSet<CharacterRoot>> GetCharactersInGuildAsync(
+        public async Task<HashSet<Character>> GetCharactersInGuildAsync(
             string[] guildMembers,
          CharacterOptions characterOptions)
         {
             var memberHashSet = new HashSet<string>(guildMembers);
-            var characterHashSet = new HashSet<CharacterRoot>();
+            var characterHashSet = new HashSet<Character>();
 
-            var downloadTasks = new HashSet<Task<CharacterRoot>>();
+            var downloadTasks = new HashSet<Task<Character>>();
 
             for (int i = 0; i < memberHashSet.Count; i++)
             {

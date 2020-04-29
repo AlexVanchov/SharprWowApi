@@ -1,30 +1,31 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace WOWSharp.Community.Wow
 {
 	/// <summary>
-	///   Represents all professions learned by a character
+	///   Represents information about a characters rated battleground performance
 	/// </summary>
 	[DataContract]
-    public class CharacterProfessions
+    public class CharacterRatedBattlegroundInformation
     {
         /// <summary>
-        ///   Gets or sets primary professions
+        ///   Gets or sets the character's rated battleground personal rating
         /// </summary>
-        [DataMember(Name = "primary", IsRequired = false)]
-        public IList<CharacterProfession> PrimaryProfessions
+        [DataMember(Name = "personalRating", IsRequired = false)]
+        public int PersonalRating
         {
             get;
             internal set;
         }
 
+
         /// <summary>
-        ///   Gets or sets secondary professions
+        ///   Gets or sets the character's battle ground stats
         /// </summary>
-        [DataMember(Name = "secondary", IsRequired = false)]
-        public IList<CharacterProfession> SecondaryProfessions
+        [DataMember(Name = "battlegrounds", IsRequired = false)]
+        public IList<BattlegroundStats> Battlegrounds
         {
             get;
             internal set;
@@ -36,9 +37,7 @@ namespace WOWSharp.Community.Wow
         /// <returns> Gets string representation (for debugging purposes) </returns>
         public override string ToString()
         {
-            return PrimaryProfessions == null
-                       ? ""
-                       : string.Join(" and ", PrimaryProfessions.Select(p => p.Name).ToArray());
+            return string.Format(CultureInfo.CurrentCulture, "Rated BG Personal Rating: {0}", PersonalRating);
         }
     }
 }

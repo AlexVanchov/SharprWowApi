@@ -4,16 +4,16 @@ using System.Runtime.Serialization;
 namespace WOWSharp.Community.Wow
 {
 	/// <summary>
-	///   Represents character progression
+	///   represents the response of guild rewards request
 	/// </summary>
 	[DataContract]
-    public class CharacterProgression
+    public class GuildRewardsResponse : ApiResponse
     {
         /// <summary>
-        ///   Gets or sets character's raid progression
+        ///   Gets or sets the guild rewards list
         /// </summary>
-        [DataMember(Name = "raids", IsRequired = false)]
-        public IList<CharacterInstanceProgression> Raids
+        [DataMember(Name = "rewards", IsRequired = true)]
+        public IList<GuildReward> Rewards
         {
             get;
             internal set;

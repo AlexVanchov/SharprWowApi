@@ -3,36 +3,36 @@
 namespace WOWSharp.Community.Wow
 {
 	/// <summary>
-	///   Represents information about talent points spent in a tree
+	///   Represents a character's title
 	/// </summary>
 	[DataContract]
-    public class CharacterTalent
+    public class CharacterTitle
     {
         /// <summary>
-        ///   Gets or sets the tier of the talent (0-5)
+        ///   Gets or sets the id of the title
         /// </summary>
-        [DataMember(Name = "tier", IsRequired = true)]
-        public int Tier
+        [DataMember(Name = "id", IsRequired = true)]
+        public int Id
         {
             get;
             internal set;
         }
 
         /// <summary>
-        ///   Gets or sets the column of the talent (0-2)
+        ///   Gets or sets the name of the title. Note that %s is replaced with character's name
         /// </summary>
-        [DataMember(Name = "column", IsRequired = true)]
-        public int Column
+        [DataMember(Name = "name", IsRequired = true)]
+        public string Name
         {
             get;
             internal set;
         }
 
         /// <summary>
-        ///   Gets or sets the spell for the talent
+        ///   Gets or sets whether this title is currently selected
         /// </summary>
-        [DataMember(Name = "spell", IsRequired = true)]
-        public Spell Spell
+        [DataMember(Name = "selected", IsRequired = false)]
+        public bool IsSelected
         {
             get;
             internal set;
@@ -44,7 +44,7 @@ namespace WOWSharp.Community.Wow
         /// <returns> Gets string representation (for debugging purposes) </returns>
         public override string ToString()
         {
-            return Spell.Name;
+            return Name;
         }
     }
 }
