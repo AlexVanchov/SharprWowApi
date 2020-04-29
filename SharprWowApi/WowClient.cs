@@ -64,7 +64,7 @@ namespace SharprWowApi
             switch (region)
             {
                 case Region.EU:
-                    this.Host = "https://eu.api.battle.net";
+                    this.Host = "https://eu.api.blizzard.com/profile";
                     break;
                 case Region.KR:
                     this.Host = "https://kr.api.battle.net";

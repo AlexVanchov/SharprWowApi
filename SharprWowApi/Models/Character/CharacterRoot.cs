@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SharprWowApi.Models.Character.AuditModel;
 
 namespace SharprWowApi.Models.Character
@@ -12,17 +14,35 @@ namespace SharprWowApi.Models.Character
     /// </summary>
     public class CharacterRoot
     {
+        //public CharacterRoot(string json)
+        //{
+        //    JObject jObject = JObject.Parse(json);
+        //    //JToken jObj = jObject["user"];
+        //    this.Name = (string)jObject["name"];
+        //    this.Realm = (string)jObject["realm"];
+        //    this.Id = (int)jObject["id"];
+        //    //players = jUser["players"].ToArray();
+        //}
         /// <summary>
         /// Gets or setsTimestamp that shows when the character API was last updated.
         /// </summary>
         public string LastModified { get; set; }
 
-        public string Name { get; set; }
+        [DataMember(Name = "name", IsRequired = true)]
+        public string Name
+        {
+            get;
+            internal set;
+        }
+
+
+        public int Id { get; set; }
 
         public string Realm { get; set; }
 
         public string Battlegroup { get; set; }
 
+        [JsonProperty("level")]
         public int Level { get; set; }
 
         /// <summary>
@@ -155,11 +175,11 @@ namespace SharprWowApi.Models.Character
         /// <summary>
         /// Gets gender of this character (Male or female)
         /// </summary>
-        public CharacterGender Gender
+        public string Gender
         {
             get
             {
-                return (CharacterGender)Enum.Parse(typeof(CharacterGender), Enum.GetName(typeof(CharacterGender), this.GenderNumber));
+                return this.GenderNumber.Name;
             }
         }
 
@@ -179,6 +199,6 @@ namespace SharprWowApi.Models.Character
         /// Gets or sets integer value of gender the characters gender. Use Gender for gender string. 
         /// </summary>
         [JsonProperty("gender")]
-        public int GenderNumber { get; set; }
+        public CharacterGender GenderNumber { get; set; }
     }
 }

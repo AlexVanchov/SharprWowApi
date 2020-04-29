@@ -56,6 +56,7 @@ namespace SharprWowApi.Utility
                     using (var sr = new StreamReader(memoryStream))
                     {
                         var content = await sr.ReadToEndAsync();
+                        //var formated = content.Replace("\\", "");
                         var deserialized = JsonConvert.DeserializeObject<T>(content);
                         return deserialized;
                     }
